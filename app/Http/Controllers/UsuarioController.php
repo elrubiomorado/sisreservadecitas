@@ -35,7 +35,7 @@ class UsuarioController extends Controller
             'password' => bcrypt($usuario['password']),
         ]);
         // Redireccionamos a la vista de listado de usuarios
-        return redirect()->route("admin.usuarios.index");
+        return redirect()->route("admin.usuarios.index")->with("info", "Usuario creado correctamente")->with("icon", "success");
     }
 
 }

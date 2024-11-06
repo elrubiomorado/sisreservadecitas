@@ -19,6 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ url('dist/css/adminlte.min.css') }}">
     <!-- Bootstrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -126,6 +128,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.sidebar -->
         </aside>
+        
+        {{-- sesion mensagges alerts sweetalert2 --}}
+        @if ((($message = Session::get("info")) && ($icon = Session::get("icon"))))
+            <div class="alert alert-success">
+                <script>
+                    Swal.fire({
+                        position: "center",
+                        icon: "{{ $icon }}",
+                        title: "{{ $message }}",
+                        showConfirmButton: false,
+                        timer: 4500
+                    });
+                </script>
+            </div>
+        @endif
+        {{-- end sesion mensagges alerts sweetalert2 --}}
 
         <div class="content-wrapper">
             <br>

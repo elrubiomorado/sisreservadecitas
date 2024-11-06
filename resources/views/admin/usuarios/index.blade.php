@@ -12,8 +12,8 @@
                     <h3 class="card-title">Usuarios registrados</h3>
 
                     <div class="card-tools">
-                        <a href="{{ route("admin.usuarios.create") }}" class="btn btn-info btn-sm">
-                            <i class="fas fa-plus"></i>  Registrar usuario
+                        <a href="{{ route('admin.usuarios.create') }}" class="btn btn-info btn-sm">
+                            <i class="fas fa-plus"></i> Registrar usuario
                         </a>
                     </div>
                     <!-- /.card-tools -->
@@ -21,6 +21,8 @@
                 <!-- /.card-header -->
 
                 <div class="card-body">
+                    {{-- mensaje de sesion  --}}
+                   
                     <div class="table-responsive">
                         <table class="table table-hover table-sm">
                             <caption>Listado de usuarios</caption>
