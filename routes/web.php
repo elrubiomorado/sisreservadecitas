@@ -21,12 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//vistas home sin autenticación
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //Rutas para el administrador
+
+//Admin vista principal
 Route::get("/admin", [AdminController::class, "index"])->name("admin.index")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
-
-
-//Rutas para el administrador-usuarios
-Route::get("/admin/usuarios", [UsuarioController::class, "index"])->name("admin.usuarios.index");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin vista de listado de usuarios
+Route::get("/admin/usuarios", [UsuarioController::class, "index"])->name("admin.usuarios.index")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin vista de creación de usuarios
+Route::get("/admin/usuarios/create", [UsuarioController::class, "create"])->name("admin.usuarios.create")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
