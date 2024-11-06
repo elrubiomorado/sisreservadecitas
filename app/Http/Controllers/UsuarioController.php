@@ -15,8 +15,27 @@ class UsuarioController extends Controller
     }
 
     public function create(){
+
         // Retornamos la vista con los datos
         return view("admin.usuarios.create");
+    }
+
+    public function store(Request $request){
+        $usuario = request()->all();
+        //validamos los datos del usuario
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:8|max:255|confirmed',
+        ]);
+        // Creamos un nuevo usuario
+        User::create([
+            'name' => $usuario['name'],
+            'email' => $usuario['email'],
+            'password' => bcrypt($usuario['password']),
+        ]);
+        // Redireccionamos a la vista de listado de usuarios
+        return redirect()->route("admin.usuarios.index");
     }
 
 }

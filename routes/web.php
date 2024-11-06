@@ -33,3 +33,5 @@ Route::get("/admin", [AdminController::class, "index"])->name("admin.index")->mi
 Route::get("/admin/usuarios", [UsuarioController::class, "index"])->name("admin.usuarios.index")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
 //Admin vista de creación de usuarios
 Route::get("/admin/usuarios/create", [UsuarioController::class, "create"])->name("admin.usuarios.create")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin crear usuario ( POST -> store )
+Route::post("/admin/usuarios/create", [UsuarioController::class, "store"])->name("admin.usuarios.store")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta

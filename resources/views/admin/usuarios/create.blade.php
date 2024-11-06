@@ -14,7 +14,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route("admin.usuarios.store") }}" method="POST">
                         @csrf
                         <div class="row">
                             <div class="col-md-12">
@@ -47,7 +47,7 @@
                             <div class="col-md-12">
                                 <div class="form group">
                                     <label for="passwordverify">Verificación de Contraseña:</label><b>*</b>
-                                    <input type="password" class="form-control" id="passwordverify" name="passwordverify" required>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
                                 </div>
                             </div>
                         </div>
