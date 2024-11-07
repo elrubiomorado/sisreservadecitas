@@ -222,7 +222,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
     </script>
     <script>
-        function confirmDelete() {
+        function confirmDelete(userId) {
             Swal.fire({
                 title: "¿Estás seguro?",
                 text: "¡No podrás revertir esto!",
@@ -235,7 +235,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Enviar el formulario después de la confirmación
-                    document.getElementById("deleteUserForm").submit();
+                    document.getElementById(`deleteUserForm-${userId}`).submit();
                 }
             });
         }

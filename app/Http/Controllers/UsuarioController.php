@@ -79,8 +79,9 @@ class UsuarioController extends Controller
 
     //Eliminamos un usuario
     public function destroy($id){
+        echo "Eliminando usuario con id: ".$id;
         // Consultamos la base de datos para obtener el usuario con el id proporcionado
-        $usuario = User::findOrFail($id);
+        $usuario = User::find($id);
         // Eliminamos el usuario de la base de datos
         $usuario->delete();
         // Redireccionamos a la vista de listado de usuarios

@@ -45,10 +45,10 @@
                                                 <a href="{{ url("admin/usuarios/".$usuario->id) }}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a  href="{{ url("/admin/usuarios/".$usuario->id."/edit") }}" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
                                                 
-                                                <form id="deleteUserForm" action="{{ url("/admin/usuarios/".$usuario->id) }}" method="POST">
+                                                <form id="deleteUserForm-{{ $usuario->id }}" action="{{ url("/admin/usuarios/".$usuario->id) }}" method="POST">
                                                     @csrf
                                                     @method("DELETE")
-                                                    <button type="button" onclick="confirmDelete()" class="btn btn-danger btn-sm">
+                                                    <button type="button" onclick="confirmDelete({{ $usuario->id }})" class="btn btn-danger btn-sm">
                                                         <i class="bi bi-person-x"></i>
                                                     </button>
                                                 </form>
