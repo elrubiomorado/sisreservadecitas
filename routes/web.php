@@ -35,3 +35,26 @@ Route::get("/admin/usuarios", [UsuarioController::class, "index"])->name("admin.
 Route::get("/admin/usuarios/create", [UsuarioController::class, "create"])->name("admin.usuarios.create")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
 //Admin crear usuario ( POST -> store )
 Route::post("/admin/usuarios/create", [UsuarioController::class, "store"])->name("admin.usuarios.store")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin show usuario
+Route::get("/admin/usuarios/{id}", [UsuarioController::class, "show"])->name("admin.usuarios.show")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin vista editar usuario
+Route::get("/admin/usuarios/{id}/edit", [UsuarioController::class, "edit"])->name("admin.usuarios.edit")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin editar usuario ( PUT -> update )
+Route::put("/admin/usuarios/{id}", [UsuarioController::class, "update"])->name("admin.usuarios.update")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+//Admin eliminar usuario ( DELETE -> destroy )
+Route::delete("/admin/usuarios/{id}", [UsuarioController::class, "destroy"])->name("admin.usuarios.destroy")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
