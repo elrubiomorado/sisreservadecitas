@@ -24,7 +24,7 @@
                     {{-- mensaje de sesion  --}}
                    
                     <div class="table-responsive">
-                        <table class="table table-hover table-sm">
+                        <table id="example1" class="table table-hover table-sm">
                             <caption>Listado de usuarios</caption>
                             <thead class="thead-ligth">
                                 <tr>

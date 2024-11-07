@@ -21,7 +21,7 @@ class UsuarioController extends Controller
     }
 
     public function store(Request $request){
-        $usuario = request()->all();
+        //$usuario = request()->all();
         //validamos los datos del usuario
         $request->validate([
             'name' => 'required|max:255',
@@ -29,11 +29,12 @@ class UsuarioController extends Controller
             'password' => 'required|min:8|max:255|confirmed',
         ]);
         // Creamos un nuevo usuario
-        User::create([
-            'name' => $usuario['name'],
-            'email' => $usuario['email'],
-            'password' => bcrypt($usuario['password']),
-        ]);
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
+        // Guardamos el usuario en la base de datos
+        $usuario->save();
         // Redireccionamos a la vista de listado de usuarios
         return redirect()->route("admin.usuarios.index")->with("info", "Usuario creado correctamente")->with("icon", "success");
     }

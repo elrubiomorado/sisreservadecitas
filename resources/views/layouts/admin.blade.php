@@ -21,6 +21,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -99,13 +103,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.usuarios.create") }}" class="nav-link active">
+                                    <a href="{{ route('admin.usuarios.create') }}" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Creación de usuarios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.usuarios.index")}}" class="nav-link active">
+                                    <a href="{{ route('admin.usuarios.index') }}" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Listado de usuarios</p>
                                     </a>
@@ -128,9 +132,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.sidebar -->
         </aside>
-        
+
         {{-- sesion mensagges alerts sweetalert2 --}}
-        @if ((($message = Session::get("info")) && ($icon = Session::get("icon"))))
+        @if (($message = Session::get('info')) && ($icon = Session::get('icon')))
             <div class="alert alert-success">
                 <script>
                     Swal.fire({
@@ -148,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="content-wrapper">
             <br>
             <div class="container">
-                @yield("content")
+                @yield('content')
             </div>
         </div>
 
@@ -181,8 +185,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="{{ url('plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- Datatable --}}
+    <script src="{{ url("plugins/datatables/jquery.dataTables.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-bs4/js/dataTables.bootstrap4.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-responsive/js/dataTables.responsive.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-responsive/js/responsive.bootstrap4.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-buttons/js/dataTables.buttons.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-buttons/js/buttons.bootstrap4.min.js") }}"></script>
+    <script src="{{ url("plugins/jszip/jszip.min.js") }}"></script>
+    <script src="{{ url("plugins/pdfmake/pdfmake.min.js") }}"></script>
+    <script src="{{ url("plugins/pdfmake/vfs_fonts.js") }}"></script>
+    <script src="{{ url("plugins/datatables-buttons/js/buttons.html5.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-buttons/js/buttons.print.min.js") }}"></script>
+    <script src="{{ url("plugins/datatables-buttons/js/buttons.colVis.min.js") }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js') }}"></script>
+    <script>
+        $(function () {
+          $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+          }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+          $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+          });
+        });
+      </script>
 </body>
 
 </html>
