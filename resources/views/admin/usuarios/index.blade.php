@@ -36,12 +36,16 @@
                             </thead>
                             <tbody>
                                 @foreach ($usuarios as $usuario)
-                                    <tr>
+                                    <tr >
                                         <th scope="row">{{ $loop->index + 1 }}</th>
                                         <td>{{ $usuario->name }}</td>
                                         <td>{{ $usuario->email }}</td>
-                                        <td>
-                                            ver / editar / eliminar
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></button>
+                                                <button type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-person-x"></i></button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
