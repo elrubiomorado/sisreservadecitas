@@ -87,4 +87,6 @@ class UsuarioController extends Controller
         // Redireccionamos a la vista de listado de usuarios
         return redirect()->route("admin.usuarios.index")->with("info", "Usuario eliminado correctamente")->with("icon", "success");
     }
+
+    
 }
