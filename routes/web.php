@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SecretariaController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +46,8 @@ Route::put("/admin/usuarios/{id}", [UsuarioController::class, "update"])->name("
 Route::delete("/admin/usuarios/{id}", [UsuarioController::class, "destroy"])->name("admin.usuarios.destroy")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
 
 
-
+//Secretarias
+Route::get("/admin/secretarias", [SecretariaController::class, "index"])->name("admin.secretarias.index")->middleware("auth");//Con el middleware hacemos que solo los usuarios autenticados puedan acceder a esta ruta
 
 
 

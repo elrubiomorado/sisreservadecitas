@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relación uno a uno con la tabla de secretarias
+    public function secretaria()
+    {
+        return $this->hasMany(Secretaria::class);
+    }
 }
